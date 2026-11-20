@@ -49,6 +49,17 @@
       background: #fff;
     }
     figcaption { margin-top: 10px; color: #555; }
+    .table-scroll { overflow-x: auto; margin: 24px 0; border: 1px solid #e2e7ed; border-radius: 12px; }
+    .table-scroll:focus-visible { outline: 2px solid #1769aa; outline-offset: 3px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    caption { padding: 12px 14px; text-align: left; font-weight: 700; }
+    th, td { padding: 8px 12px; border-top: 1px solid #e2e7ed; text-align: right; }
+    th:first-child { text-align: left; }
+    tbody th { font-weight: 500; }
+    thead { background: #f4f6f8; }
+    .ours { background: #eaf3fb; }
+    .ours th { font-weight: 700; }
+    .metric-note { color: #555; font-size: 0.9375rem; }
   </style>
 </head>
 <body>
@@ -79,6 +90,193 @@
         <img src="assets/method.png" alt="KEMoGen architecture showing separate motion and facial expression branches" width="1645" height="1049" loading="lazy">
         <figcaption>The motion branch denoises body pose, global translation, and foot-contact states conditioned on speech and KET. The expression branch denoises facial coefficients using a separate speech encoder.</figcaption>
       </figure>
+    </section>
+
+    <section aria-labelledby="quantitative-results">
+      <h2 id="quantitative-results">Quantitative Results</h2>
+      <p>KEMoGen achieves the lowest FGD among the compared methods in both BEAT2 settings. On Standard Speaker-2, it also achieves the highest emotion classification accuracy and the diversity score closest to ground truth.</p>
+      <p class="metric-note">KEMoGen results are reported as mean ± standard deviation over five seeds. ↓ and ↑ indicate lower and higher are better, respectively. For BeatAlign and Diversity (→), closer to ground truth is better. A dash indicates an unavailable value.</p>
+
+      <div class="table-scroll" role="region" aria-labelledby="standard-speaker-2" tabindex="0">
+        <table>
+          <caption id="standard-speaker-2">BEAT2 Standard Speaker-2</caption>
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">FGD ↓</th>
+              <th scope="col">BeatAlign →</th>
+              <th scope="col">Diversity →</th>
+              <th scope="col">MSE (×10<sup>−8</sup>) ↓</th>
+              <th scope="col">LVD (×10<sup>−5</sup>) ↓</th>
+              <th scope="col">EmoAcc (%) ↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Ground truth</th>
+              <td>—</td>
+              <td>0.7030</td>
+              <td>11.970</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">Habibie et al.</th>
+              <td>0.904</td>
+              <td>0.7716</td>
+              <td>8.213</td>
+              <td>8.614</td>
+              <td>8.043</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">TalkSHOW</th>
+              <td>0.620</td>
+              <td>0.6947</td>
+              <td>13.47</td>
+              <td>7.791</td>
+              <td>7.771</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">EMAGE</th>
+              <td>0.551</td>
+              <td>0.7724</td>
+              <td>13.06</td>
+              <td>7.680</td>
+              <td>7.556</td>
+              <td>60.16</td>
+            </tr>
+            <tr>
+              <th scope="row">EchoMask</th>
+              <td>0.462</td>
+              <td>0.7738</td>
+              <td>13.37</td>
+              <td>6.761</td>
+              <td>7.290</td>
+              <td>31.15</td>
+            </tr>
+            <tr>
+              <th scope="row">SemTalk</th>
+              <td>0.427</td>
+              <td>0.7770</td>
+              <td>12.91</td>
+              <td>6.153</td>
+              <td>6.938</td>
+              <td>44.26</td>
+            </tr>
+            <tr>
+              <th scope="row">GlobalDiff</th>
+              <td>0.478</td>
+              <td>0.7050</td>
+              <td>13.73</td>
+              <td>6.330</td>
+              <td>—</td>
+              <td>36.80</td>
+            </tr>
+            <tr>
+              <th scope="row">LiveGesture</th>
+              <td>0.457</td>
+              <td>0.7940</td>
+              <td>13.91</td>
+              <td>12.41</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr class="ours">
+              <th scope="row">KEMoGen</th>
+              <td>0.295 ± 0.003</td>
+              <td>0.7648 ± 0.0017</td>
+              <td>12.372 ± 0.136</td>
+              <td>7.49 ± 0.43</td>
+              <td>7.18 ± 0.03</td>
+              <td>72.19 ± 2.73</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll" role="region" aria-labelledby="all-speaker" tabindex="0">
+        <table>
+          <caption id="all-speaker">BEAT2 All-Speaker</caption>
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">FGD ↓</th>
+              <th scope="col">BeatAlign →</th>
+              <th scope="col">Diversity →</th>
+              <th scope="col">MSE (×10<sup>−8</sup>) ↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Ground truth</th>
+              <td>—</td>
+              <td>0.477</td>
+              <td>7.29</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">CaMN</th>
+              <td>0.512</td>
+              <td>0.200</td>
+              <td>5.58</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">Audio2Photoreal</th>
+              <td>0.849</td>
+              <td>0.326</td>
+              <td>6.24</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">ReMoDiffuse</th>
+              <td>1.120</td>
+              <td>0.218</td>
+              <td>5.06</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">DSG</th>
+              <td>1.174</td>
+              <td>0.734</td>
+              <td>11.12</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">EMAGE</th>
+              <td>0.692</td>
+              <td>0.284</td>
+              <td>6.06</td>
+              <td>6.90</td>
+            </tr>
+            <tr>
+              <th scope="row">RAG-GESTURE</th>
+              <td>0.487</td>
+              <td>0.514</td>
+              <td>9.94</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <th scope="row">GlobalDiff</th>
+              <td>0.263</td>
+              <td>0.404</td>
+              <td>8.24</td>
+              <td>4.14</td>
+            </tr>
+            <tr class="ours">
+              <th scope="row">KEMoGen</th>
+              <td>0.229 ± 0.002</td>
+              <td>0.699 ± 0.000</td>
+              <td>8.51 ± 0.05</td>
+              <td>7.31 ± 0.05</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="metric-note">All-Speaker baseline results and ground-truth statistics follow GlobalDiff, as reported in the paper.</p>
     </section>
 
     <section>

@@ -7,10 +7,8 @@ This repository hosts the KEMoGen project website.
 ## Update the website
 
 Edit `docs/index.html` to update the paper title, authors, affiliations, and abstract.
-The current page contains placeholders for these details.
 
-Upload demonstration videos and method figures to `docs/assets/`, then enable the corresponding commented sections in `docs/index.html`.
-Add the paper link when it becomes available.
+The figures are stored in `docs/assets/`. Add demo videos there and embed them in `docs/index.html` when available.
 
 ## GitHub Pages
 

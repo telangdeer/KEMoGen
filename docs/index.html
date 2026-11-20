@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KEMoGen research project">
-  <title>KEMoGen</title>
+  <meta name="description" content="KEMoGen generates speech-driven full-body motion and facial expressions with fine-grained emotion control.">
+  <title>KEMoGen | Kinematic-aware Text-guided Emotion Control</title>
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Inter, system-ui, sans-serif;
       color: #202124;
       background: #fff;
       line-height: 1.7;
@@ -19,8 +19,8 @@
       margin: auto;
       padding: 64px 24px;
     }
-    header { text-align: center; margin-bottom: 56px; }
-    h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.2; }
+    header { text-align: center; margin-bottom: 42px; }
+    h1 { font-size: clamp(28px, 5vw, 46px); line-height: 1.15; text-wrap: balance; }
     h2 { font-size: 28px; margin-top: 48px; }
     .authors { font-size: 19px; }
     .affiliations { color: #666; }
@@ -39,47 +39,55 @@
       text-decoration: none;
     }
     a { color: #1769aa; }
-    p { overflow-wrap: anywhere; }
+    figure { margin: 24px 0; }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #e2e7ed;
+      border-radius: 12px;
+      background: #fff;
+    }
+    figcaption { margin-top: 10px; color: #555; }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>KEMoGen<br>在这里填写论文完整标题</h1>
-      <p class="authors">在这里填写作者姓名</p>
-      <p class="affiliations">在这里填写学校或机构</p>
+      <h1>KEMoGen: Kinematic-aware Text-guided Emotion Control for Audio-driven Full-body Motion Generation</h1>
+      <p class="authors">Xiong Lei, Bochao Zou, Sirui Zhu, Li Sun, Junbao Zhuo, Jiansheng Chen, and Huimin Ma</p>
+      <p class="affiliations">School of Computer and Communication Engineering, University of Science and Technology Beijing, Beijing, China</p>
 
       <nav class="links" aria-label="Project resources">
-        <a href="https://github.com/telangdeer/KEMoGen">Code</a>
-        <!-- 获得论文链接后，取消下一行注释并替换地址 -->
-        <!-- <a href="在这里填写论文链接">Paper</a> -->
+        <a href="https://github.com/telangdeer/KEMoGen">GitHub</a>
       </nav>
     </header>
 
+    <figure>
+      <img src="assets/task.png" alt="Full-body motion sequences generated from the same speech with different emotion descriptions" width="1957" height="1093">
+      <figcaption>Given the same speech input, different KET conditions produce full-body motions with distinct emotion styles.</figcaption>
+    </figure>
+
     <section>
       <h2>Abstract</h2>
-      <p>在这里填写论文的英文摘要。</p>
-    </section>
-
-    <!-- 上传素材后，取消对应部分的注释 -->
-    <!--
-    <section>
-      <h2>Demo</h2>
-      <video controls playsinline preload="metadata"
-             style="display:block; width:100%; border-radius:12px;">
-        <source src="assets/demo.mp4" type="video/mp4">
-        Your browser does not support HTML video.
-      </video>
+      <p>We propose KEMoGen, a speech-driven full-body motion generation method for 3D virtual characters. Existing approaches remain limited by coarse-grained emotional control and insufficient full-body motion coordination. KEMoGen adopts a unified dual-branch Diffusion Transformer to jointly generate body motion and facial expressions while preserving modality-specific feature pathways. For fine-grained emotional control, we introduce Kinematic-Aware Emotional Text (KET), which converts kinematic characteristics, including motion intensity, temporal sharpness, spatial expansion, and dominant body regions, into natural-language descriptions of how emotions are expressed through movement. A Local Emotion Adapter and a Global Emotion Modulator further inject fine-grained local semantics and global affective style, respectively, enabling complementary local and global emotion modulation. Extensive experiments on the BEAT2 dataset demonstrate that KEMoGen improves body-motion quality and emotional controllability over existing methods while maintaining competitive audio–motion synchronization and facial dynamics. Subjective evaluations further support its advantages in perceived emotion accuracy and motion harmony.</p>
     </section>
 
     <section>
       <h2>Method</h2>
-      <img src="assets/method.png"
-           alt="Overview of the KEMoGen method"
-           style="display:block; width:100%; height:auto;">
-      <p>在这里填写方法图的说明。</p>
+      <figure>
+        <img src="assets/method.png" alt="KEMoGen architecture showing separate motion and facial expression branches" width="1645" height="1049" loading="lazy">
+        <figcaption>The motion branch denoises body pose, global translation, and foot-contact states conditioned on speech and KET. The expression branch denoises facial coefficients using a separate speech encoder.</figcaption>
+      </figure>
     </section>
-    -->
+
+    <section>
+      <h2>Qualitative Comparison</h2>
+      <figure>
+        <img src="assets/comparison.png" alt="Frames comparing KEMoGen with other speech-driven motion generation methods" width="1388" height="1092" loading="lazy">
+        <figcaption>Qualitative comparison with representative speech-driven motion generation methods on BEAT2.</figcaption>
+      </figure>
+    </section>
   </main>
 </body>
 </html>

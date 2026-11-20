@@ -60,6 +60,18 @@
     .ours { background: #eaf3fb; }
     .ours th { font-weight: 700; }
     .metric-note { color: #555; font-size: 0.9375rem; }
+    .metric-best {
+      background: #dcf4e5;
+      color: #14532d;
+      font-weight: 700;
+    }
+    .metric-second {
+      background: #ffefc2;
+      color: #713f12;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+    .metric-legend span { display: inline-block; padding: 2px 8px; border-radius: 4px; }
   </style>
 </head>
 <body>
@@ -94,6 +106,11 @@
 
     <section aria-labelledby="quantitative-results">
       <h2 id="quantitative-results">Quantitative Results</h2>
+      <p class="metric-note metric-legend">
+        <span class="metric-best">Best</span>
+        <span class="metric-second">Second best</span>
+        among compared methods in each column.
+      </p>
       <p>KEMoGen achieves the lowest FGD among the compared methods in both BEAT2 settings. On Standard Speaker-2, it also achieves the highest emotion classification accuracy and the diversity score closest to ground truth.</p>
       <p class="metric-note">KEMoGen results are reported as mean ± standard deviation over five seeds. ↓ and ↑ indicate lower and higher are better, respectively. For BeatAlign and Diversity (→), closer to ground truth is better. A dash indicates an unavailable value.</p>
 
@@ -133,7 +150,7 @@
             <tr>
               <th scope="row">TalkSHOW</th>
               <td>0.620</td>
-              <td>0.6947</td>
+              <td class="metric-second" title="Second best">0.6947</td>
               <td>13.47</td>
               <td>7.791</td>
               <td>7.771</td>
@@ -146,7 +163,7 @@
               <td>13.06</td>
               <td>7.680</td>
               <td>7.556</td>
-              <td>60.16</td>
+              <td class="metric-second" title="Second best">60.16</td>
             </tr>
             <tr>
               <th scope="row">EchoMask</th>
@@ -159,19 +176,19 @@
             </tr>
             <tr>
               <th scope="row">SemTalk</th>
-              <td>0.427</td>
+              <td class="metric-second" title="Second best">0.427</td>
               <td>0.7770</td>
-              <td>12.91</td>
-              <td>6.153</td>
-              <td>6.938</td>
+              <td class="metric-second" title="Second best">12.91</td>
+              <td class="metric-best" title="Best">6.153</td>
+              <td class="metric-best" title="Best">6.938</td>
               <td>44.26</td>
             </tr>
             <tr>
               <th scope="row">GlobalDiff</th>
               <td>0.478</td>
-              <td>0.7050</td>
+              <td class="metric-best" title="Best">0.7050</td>
               <td>13.73</td>
-              <td>6.330</td>
+              <td class="metric-second" title="Second best">6.330</td>
               <td>—</td>
               <td>36.80</td>
             </tr>
@@ -186,12 +203,12 @@
             </tr>
             <tr class="ours">
               <th scope="row">KEMoGen</th>
-              <td>0.295 ± 0.003</td>
+              <td class="metric-best" title="Best">0.295 ± 0.003</td>
               <td>0.7648 ± 0.0017</td>
-              <td>12.372 ± 0.136</td>
+              <td class="metric-best" title="Best">12.372 ± 0.136</td>
               <td>7.49 ± 0.43</td>
-              <td>7.18 ± 0.03</td>
-              <td>72.19 ± 2.73</td>
+              <td class="metric-second" title="Second best">7.18 ± 0.03</td>
+              <td class="metric-best" title="Best">72.19 ± 2.73</td>
             </tr>
           </tbody>
         </table>
@@ -228,7 +245,7 @@
               <th scope="row">Audio2Photoreal</th>
               <td>0.849</td>
               <td>0.326</td>
-              <td>6.24</td>
+              <td class="metric-second" title="Second best">6.24</td>
               <td>—</td>
             </tr>
             <tr>
@@ -250,25 +267,25 @@
               <td>0.692</td>
               <td>0.284</td>
               <td>6.06</td>
-              <td>6.90</td>
+              <td class="metric-second" title="Second best">6.90</td>
             </tr>
             <tr>
               <th scope="row">RAG-GESTURE</th>
               <td>0.487</td>
-              <td>0.514</td>
+              <td class="metric-best" title="Best">0.514</td>
               <td>9.94</td>
               <td>—</td>
             </tr>
             <tr>
               <th scope="row">GlobalDiff</th>
-              <td>0.263</td>
-              <td>0.404</td>
-              <td>8.24</td>
-              <td>4.14</td>
+              <td class="metric-second" title="Second best">0.263</td>
+              <td class="metric-second" title="Second best">0.404</td>
+              <td class="metric-best" title="Best">8.24</td>
+              <td class="metric-best" title="Best">4.14</td>
             </tr>
             <tr class="ours">
               <th scope="row">KEMoGen</th>
-              <td>0.229 ± 0.002</td>
+              <td class="metric-best" title="Best">0.229 ± 0.002</td>
               <td>0.699 ± 0.000</td>
               <td>8.51 ± 0.05</td>
               <td>7.31 ± 0.05</td>
